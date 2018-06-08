@@ -1,0 +1,14 @@
+.jumbotron {
+background-image: url(http://www.tbsearch.fr/wp-content/uploads/2015/10/iStock_000055597470_Small.jpg);
+background-size: cover;
+
+}
+
+h1 {
+text-align: center;
+color: whitesmoke;
+font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif, Geneva, Tahoma, sans-serif;
+font-size: 80px;
+text-shadow: 5px 5px 5px black;
+
+}

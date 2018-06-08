@@ -20,18 +20,18 @@ $(document).ready(function() {
       var windAngle = "";
       var windSpeed = "";
 
-      function sendUserInfo() {
+      function setUserInfo() {
         //need a submitButton  
         $("#submitButton").on("click", function(event) {
             event.preventDefault();
-            displayWeather();
-
+            compileWeather();
+            retrieveData();
 
 
         });
       }
 
-      function displayWeather() {            
+      function compileWeather() {            
         var APIKey = "&appid=cb22e0a2f90f3ba4d3f4efb8f11a8410";
         var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + "London,uk" + APIKey;
 
@@ -62,6 +62,22 @@ $(document).ready(function() {
         });
     }
 
-    sendUserInfo();
-    displayWeather();
+    function retrieveData() {
+        database.ref().on("child_added", function(snapshot) {
+            $("#tableBody").append("<tr><td>" + snapshot.val().city + 
+                "</td><td>" + snapshot.val().temp +
+                "</td><td>" + snapshot.val().humidity +
+                "</td><td>" + snapshot.val().cloudy +
+                "</td><td>" + snapshot.val().windAngle +
+                "</td><td>" + snapshot.val().windSpeed +
+                "</td><td>" + snapshot.val().hi +
+                "</td><td>" + snapshot.val().low +
+                "</td></tr>"
+            );
+        });
+    }
+
+    setUserInfo();
+    // compileWeather();
+    // retrieveData();
 });

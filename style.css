@@ -1,5 +1,5 @@
 body {
-background-image: url(https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/itCjTBE/light-blue-smooth-waves-abstract-background-video-animation-1920x1080_v1oanuqzg__F0000.png);
+background-image: url(https://d100radio.com/media/uploads/2017/11/AdobeStock_159538549.jpeg);
 }
 
 
@@ -16,4 +16,27 @@ font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif, Geneva, 
 font-size: 80px;
 text-shadow: 5px 5px 5px black;
 
+}
+
+#pillshape{
+    width: 40px;
+    height: 25px;
+    background:green;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius:40px;
+}
+
+#square {
+    width: 35px;
+    height: 35px;
+    background: red;
+}
+
+#triangle {
+    width: 0;
+    height: 0;
+    border-top: 30px solid orange;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
 }

@@ -31,7 +31,7 @@
                 <label for="exampleFormControlInput1"><strong>Enter the City</strong></label> 
                 <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Salt Lake City">
             </div> 
-            <input type="button" class="btn btn-light" value="Search">
+            <input type="button" class="btn btn-light" value="Search" id="submitButton">
         
         </form>
            
@@ -84,10 +84,6 @@
                 </tr> -->
             </tbody>
         </table>
-
-        <div class="alert alert-danger" role="alert">
-            Air Quality
-        </div>
         
         <br>
         
@@ -100,7 +96,7 @@
                     <th scope="col">Recomendetions</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="aqiTable">
                 <tr>
         
                     <td>03/04/18 - 13:05</td>
@@ -157,6 +153,7 @@
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
         crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
 

@@ -27,6 +27,7 @@ var hiTemp = "";
 var lowTemp = "";
 var windAngle = "";
 var windSpeed = "";
+var date = "";
 
 
 
@@ -50,14 +51,14 @@ function setUserInfo() {
 function compileWeather() {
   inputCity = $(".form-control").val().trim();
   inputCity = inputCity.replace(/\s+/g, '+');
-  var APIKey = "&appid=cb22e0a2f90f3ba4d3f4efb8f11a8410";
-  var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + inputCity + APIKey;
+  var APIKeyOne = "&appid=cb22e0a2f90f3ba4d3f4efb8f11a8410";
+  var queryURLOne = "https://api.openweathermap.org/data/2.5/weather?q=" + inputCity + APIKeyOne;
 
   $.ajax({
-    url: queryURL,
+    url: queryURLOne,
     method: "GET"
   }).then(function (response) {
-    console.log(response);
+
 
     city = response.name;
     cloudy = response.weather[0].description;
@@ -79,12 +80,41 @@ function compileWeather() {
       windSpeed: windSpeed
     });
 
+
+  });
+  var APIKeyTwo = "&appid=cb22e0a2f90f3ba4d3f4efb8f11a8410";
+  var queryURLTwo = "https://api.openweathermap.org/data/2.5/forecast?q=" + inputCity + APIKeyTwo;
+
+  $.ajax({
+    url: queryURLTwo,
+    method: "GET"
+  }).then(function (response) {
+    console.log(response);
+    city = response.city.name;
+    var cloudyArray = [];
+    for (var i = 0; i < 40; i++) {
+     var cloudy = response.list[i].weather[0].description;
+     if (i % 8 === 0) {
+       cloudyArray.push(cloudy);
+     }
+    }  
+    console.log(cloudyArray);
+    var dateArray = [];
+    for (var j = 0; j < 40; j++) {
+      var originalDate = (response.list[j].dt_txt);
+      if (j % 8 === 0) {
+        var printDate = originalDate.substr(5).slice(0, -9);
+        dateArray.push(printDate);
+      }
+    }
+
+    console.log(dateArray);
   });
 }
 
 function retrieveWeather() {
   database.ref("/weather").on("child_added", function (snapshot) {
-    console.log(snapshot.val());
+    // console.log(snapshot.val());
     $("#tableBody").append("<tr><td>" + snapshot.val().city +
       "</td><td>" + snapshot.val().temp +
       "</td><td>" + snapshot.val().humidity +
@@ -122,7 +152,7 @@ var settings = {
 
 function aqiIndex() {
   $.ajax(settings).done(function (response) {
-    console.log(response);
+    // console.log(response);
     date = moment().format('LL');
     time = moment().format('LT');
     dateTime = response.datetime;
@@ -130,11 +160,11 @@ function aqiIndex() {
     airColor = response.breezometer_color;
     index = response.breezometer_description;
     recommendations = response.random_recommendations.health;
-    console.log(dateTime);
-    console.log(airQuality);
-    console.log(airColor);
-    console.log(index);
-    console.log(recommendations);
+    // console.log(dateTime);
+    // console.log(airQuality);
+    // console.log(airColor);
+    // console.log(index);
+    // console.log(recommendations);
 
 
     database.ref("/aqiInfo").push({

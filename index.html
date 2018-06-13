@@ -15,14 +15,15 @@
         <br>
         <div class="jumbotron">
             <h1 class="text-center">Welcome to Weather Box</h1>
-            <h3 class="text-center">"Where you can find ......"</h3>
+            <h3 class="text-center">"Find the weather wherever you want!"</h3>
         </div>
 
         <form>
             <div class="form-group">
                 <label for="exampleFormControlInput1"><strong>Enter the City</strong></label> 
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Salt Lake City">
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter a city">
             </div> 
+
             <input type="button" class="btn btn-light" value="Search" id="submitButton">
         
         </form>   
@@ -30,6 +31,8 @@
         <table class="table table-hover table-info">
             <thead>
                 <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Time</th>
                     <th scope="col">City</th>
                     <th scope="col">Temperature</th>
                     <th scope="col">Humidity</th>
@@ -49,9 +52,9 @@
         <table class="table table-hover table-danger">
             <thead>
                 <tr>
-                    <th scope="col">City</th>
                     <th scope="col">Date</th>
                     <th scope="col">Time</th>
+                    <th scope="col">City</th> 
                     <th scope="col">Air Quality</th>
                     <th scope="col">Index</th>
                     <th scope="col">Color</th>

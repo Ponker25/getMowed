@@ -25,6 +25,7 @@ var config = {
   var lowTemp = "";
   var windAngle = "";
   var windSpeed = "";
+
   function setUserInfo() {
     //need a submitButton  
     $("#submitButton").on("click", function (event) {
@@ -37,6 +38,7 @@ var config = {
       getAirQualityData();
     });
   }
+
   function compileWeather() {
     inputCity = $(".form-control").val().trim();
     inputCity = inputCity.replace(/\s+/g, '+');
@@ -47,6 +49,8 @@ var config = {
       method: "GET"
     }).then(function (response) {
       console.log(response);
+      date = moment().format('LL');
+      time = moment().format('LT')
       city = response.name;
       cloudy = response.weather[0].description;
       humidity = response.main.humidity;
@@ -55,7 +59,11 @@ var config = {
       lowTemp = Math.round(9 / 5 * (response.main.temp_min - 273) + 32);
       windAngle = response.wind.deg;
       windSpeed = response.wind.speed;
+      
+
       database.ref("/weather").push({
+        date: date,
+        time: time,
         city: city,
         cloudy: cloudy,
         humidity: humidity,
@@ -70,7 +78,9 @@ var config = {
   function retrieveWeather() {
     database.ref("/weather").on("child_added", function (snapshot) {
       console.log(snapshot.val());
-      $("#tableBody").append("<tr><td>" + snapshot.val().city +
+      $("#tableBody").append("<tr><td>" + snapshot.val().date +
+        "</td><td>" + snapshot.val().time +
+        "</td><td>" + snapshot.val().city +
         "</td><td>" + snapshot.val().temp +
         "</td><td>" + snapshot.val().humidity +
         "</td><td>" + snapshot.val().cloudy +
@@ -82,6 +92,7 @@ var config = {
       );
     });
   }
+
   setUserInfo();
   var dateTime = "";
   var airQuality = "";
@@ -92,19 +103,20 @@ var config = {
   var qualityLong = $("#cityInputLong").text();
   var apiKey = "e4417ac440f444eb8397e28bcb3fc5c5";
   var settings = {
-    "async": true,
-    "crossDomain": true,
+    // "async": true,
+    // "crossDomain": true,
     // additional variable inforation to flood latitude and longitude.
     "url": "https://api.breezometer.com/baqi/?lat=40.7324296&lon=-73.9977264&key=e4417ac440f444eb8397e28bcb3fc5c5",
     "method": "GET",
-    "headers": {
-      "Cache-Control": "no-cache",
-      "Postman-Token": "1d63ebfc-0c70-4f76-ad2e-88c75e87c36c"
-    }
+    // "headers": {
+    //   "Cache-Control": "no-cache",
+    //   "Postman-Token": "1d63ebfc-0c70-4f76-ad2e-88c75e87c36c"
+    // }
   };
   function aqiIndex() {
     $.ajax(settings).done(function (response) {
       console.log(response);
+      inputCity = $(".form-control").val().trim();
       date = moment().format('LL');
       time = moment().format('LT');
       airQuality = response.breezometer_aqi;
@@ -112,6 +124,7 @@ var config = {
       index = response.breezometer_description;
       recommendations = response.random_recommendations.health;
       
+            console.log(inputCity);
             console.log(date);
             console.log(time);
             console.log(airQuality);
@@ -119,7 +132,22 @@ var config = {
             console.log(index);
             console.log(recommendations);
 
+if (airColor === "#009E3A") {
+  airColor === "pillshape";
+} else if (airColor === "#58BE35") {
+  airColor === "circle";
+} else if (airColor === "#C1E619") {
+  airColor === "diamond";
+} else if (airColor === "#FEC500") {
+  airColor === "triangle";
+} else if (airColor === "#FE4600") {
+  airColor === "square";
+} else if (airColor === "#800000") {
+  airColor === "hexagon";
+}
+
       database.ref("/aqiInfo").push({
+        inputCity: inputCity,
         date: date,
         time: time,
         airQuality: airQuality,
@@ -132,9 +160,10 @@ var config = {
   function getAirQualityData() {
     database.ref("/aqiInfo").on("child_added", function (snapshot) {
       $("#aqiTable").append("<tr><td>" + snapshot.val().date +
-        "</td><td>" + snapshot.val().time +
+        "</td><td>" + snapshot.val().time + 
+        "</td><td>" + snapshot.val().inputCity +
         "</td><td>" + snapshot.val().airQuality +
-        "</td><td>" + snapshot.val().airColor +
+        "</td><td data-color =" + snapshot.val().airColor + ">" +
         "</td><td>" + snapshot.val().index +
         "</td><td>" + snapshot.val().recommendations +
         "</td></tr>"

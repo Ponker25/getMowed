@@ -11,170 +11,19 @@
 </head>
 
 <body>
-<<<<<<< HEAD
- 
-<div class="container">
-
-    <br>
-
-    <!-- Jumbotron Title -->
-    <div class="jumbotron">
-        <h1 class="text-center">Welcome to Weather Box</h1>
-        <h3 class="text-center">"Where you can find ......"</h3>
-    </div>
-
-<form>
-    <div class="form-group">
-        <label for="exampleFormControlInput1"><strong>Enter the City</strong></label> 
-        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Salt Lake City">
-    </div> 
-    <input type="button" class="btn btn-light" value="Search">
-
-</form>
-   
-<br>
-    
-    
-            <table class="table table-hover table-info">
-                <thead>
-                    <tr>
-                        <th scope="col">City</th>
-                        <th scope="col">Wind</th>
-                        <th scope="col">Humidity</th>
-                        <th scope="col">Dew Point</th>
-                        <th scope="col">Pressure</th>
-                        <th scope="col">Visibility</th>
-                        <th scope="col">Uv Index</th>
-
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                       
-                        <td>Salt Lake City</td>
-                        <td>SSW 8 mph</td>
-                        <td>8%</td>
-                        <td>28</td>
-                        <td>28.58 in</td>
-                        <td>10.00 mi</td>
-                        <td>0 of 10</td>
-                    </tr>       
-                    
-                </tbody>
-                </table>
-
-<br>
-
-
-
-<table class="table table-hover table-danger">
-    <thead>
-        <tr>
-            <th scope="col">City</th>
-            <th scope="col">Date</th>
-            <th scope="col">Time</th>
-            <th scope="col">Air Quality</th>
-            <th scope="col">Index</th>
-            <th scope="col">Color</th>
-            <th scope="col">Recommendetions</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>park city</td>
-            <td>03/04/18</td>
-            <td>13:05</td>
-            <td>Good</td>
-            <td>100</td>
-            <td><div id="pillshape"></div></td>
-            <td>Go outise</td>
-        </tr>
-
-        <tr>
-            <td>park city</td>
-            <td>03/04/18</td>
-            <td>13:05</td>
-            <td>Bad</td>
-            <td>151-200</td>
-            <td><div id="square"></div></td>
-            <td>stay inside</td>
-        </tr>
-
-        <tr>
-            <td>park city</td>
-            <td>03/04/18</td>
-            <td>13:05</td>
-            <td>moderate</td>
-            <td>40</td>
-            <td><div id="triangle"></div></td>
-            <td>think about to go outside</td>
-        </tr>
-
-
-        <tr>
-            <td>park city</td>
-            <td>03/04/18</td>
-            <td>13:05</td>
-            <td>moderate</td>
-            <td>80</td>
-            <td><div id="circle"></div></td>
-            <td>think about to go outside</td>
-        </tr>
-
-        <tr>
-            <td>park city</td>
-            <td>03/04/18</td>
-            <td>13:05</td>
-            <td>moderate</td>
-            <td>80</td>
-            <td>
-                <div id="hexagon"></div>
-            </td>
-            <td>think about to go outside</td>
-        </tr>
-
-         tr>
-        <td>park city</td>
-        <td>03/04/18</td>
-        <td>13:05</td>
-        <td>moderate</td>
-        <td>80</td>
-        <td>
-            <div id="diamond"></div>
-        </td>
-        <td>think about to go outside</td>
-        </tr>
-
-
-    
-
-    </tbody>
-</table>
-
-
-
-                
-                          
-
-    <!-- Make Your Bid -->
-
-
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-=======
     <div class="container">
         <br>
         <div class="jumbotron">
             <h1 class="text-center">Welcome to Weather Box</h1>
-            <h3 class="text-center">"Where you can find ......"</h3>
+            <h3 class="text-center">"Find the weather wherever you want!"</h3>
         </div>
 
         <form>
             <div class="form-group">
                 <label for="exampleFormControlInput1"><strong>Enter the City</strong></label> 
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Salt Lake City">
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter a city">
             </div> 
+
             <input type="button" class="btn btn-light" value="Search" id="submitButton">
         
         </form>   
@@ -182,6 +31,8 @@
         <table class="table table-hover table-info">
             <thead>
                 <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Time</th>
                     <th scope="col">City</th>
                     <th scope="col">Temperature</th>
                     <th scope="col">Humidity</th>
@@ -201,9 +52,9 @@
         <table class="table table-hover table-danger">
             <thead>
                 <tr>
-                    <th scope="col">City</th>
                     <th scope="col">Date</th>
                     <th scope="col">Time</th>
+                    <th scope="col">City</th> 
                     <th scope="col">Air Quality</th>
                     <th scope="col">Index</th>
                     <th scope="col">Color</th>
@@ -247,7 +98,6 @@
 
 
     </div>
->>>>>>> master
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"

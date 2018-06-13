@@ -132,19 +132,19 @@ var config = {
             console.log(index);
             console.log(recommendations);
 
-if (airColor === "#009E3A") {
-  airColor === "pillshape";
-} else if (airColor === "#58BE35") {
-  airColor === "circle";
-} else if (airColor === "#C1E619") {
-  airColor === "diamond";
-} else if (airColor === "#FEC500") {
-  airColor === "triangle";
-} else if (airColor === "#FE4600") {
-  airColor === "square";
-} else if (airColor === "#800000") {
-  airColor === "hexagon";
-}
+                if (airColor === "#009E3A") {
+                  airColor === "pillshape";
+                } else if (airColor === "#58BE35") {
+                  airColor === "circle";
+                } else if (airColor === "#C1E619") {
+                  airColor === "diamond";
+                } else if (airColor === "#FEC500") {
+                  airColor === "triangle";
+                } else if (airColor === "#FE4600") {
+                  airColor === "square";
+                } else if (airColor === "#800000") {
+                  airColor === "hexagon";
+                }
 
       database.ref("/aqiInfo").push({
         inputCity: inputCity,

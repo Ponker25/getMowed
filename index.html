@@ -1,21 +1,17 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
         crossorigin="anonymous">
-
-        <link rel="stylesheet" type="text/css" href="style.css">
-
+    <link rel="stylesheet" type="text/css" href="assets/style.css">
     <title> The Weather Box!</title>
 </head>
 
 <body>
+<<<<<<< HEAD
  
 <div class="container">
 
@@ -166,14 +162,105 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+=======
+    <div class="container">
+        <br>
+        <div class="jumbotron">
+            <h1 class="text-center">Welcome to Weather Box</h1>
+            <h3 class="text-center">"Where you can find ......"</h3>
+        </div>
+
+        <form>
+            <div class="form-group">
+                <label for="exampleFormControlInput1"><strong>Enter the City</strong></label> 
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Salt Lake City">
+            </div> 
+            <input type="button" class="btn btn-light" value="Search" id="submitButton">
+        
+        </form>   
+        <br><br>
+        <table class="table table-hover table-info">
+            <thead>
+                <tr>
+                    <th scope="col">City</th>
+                    <th scope="col">Temperature</th>
+                    <th scope="col">Humidity</th>
+                    <th scope="col">Clouds</th>
+                    <th scope="col">Wind Direction</th>
+                    <th scope="col">Wind Speed</th>
+                    <th scope="col">High Temperature</th>
+                    <th scope="col">Low Temperature</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+            </tbody>
+        </table>
+        
+        <br>
+        
+        <table class="table table-hover table-danger">
+            <thead>
+                <tr>
+                    <th scope="col">City</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Air Quality</th>
+                    <th scope="col">Index</th>
+                    <th scope="col">Color</th>
+                    <th scope="col">Recommendations</th>
+                </tr>
+            </thead>
+            <tbody id="aqiTable">
+                <tr>
+                    <td><div id="pillshape"></div></td>
+                </tr>        
+            </tbody>
+        </table>
+
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img class="d-block w-100" src="https://qtxasset.com/fiercewireless/1523306978/saltlakecity.jpg/saltlakecity.jpg?jDT5R8Y34xORxcboil8Tn.jln.SKYaTX" alt="First slide">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="http://media.beam.usnews.com/25/e7/8ca03568402aab820a6a399f4906/170425-dallastexas-stock.jpg" alt="Second slide">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="https://media.timeout.com/images/103444978/image.jpg" alt="Third slide">
+                    </div>
+                </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+
+
+    </div>
+>>>>>>> master
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
         crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
 
-  
+    <script src="assets/javascript.js"></script>
 </body>
 
 </html>
+

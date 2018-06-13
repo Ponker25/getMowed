@@ -68,6 +68,25 @@ function compileWeather() {
     lowTemp = Math.round(9 / 5 * (response.main.temp_min - 273) + 32);
     windAngle = response.wind.deg;
     windSpeed = response.wind.speed;
+    windCardinal = "";
+
+    if (windAngle >= 22 && windAngle <= 67) {
+      windCardinal = "Northeast";
+    } else if (windAngle >= 67.01 && windAngle <= 112){
+      windCardinal = "East";
+    } else if (windAngle >= 112.01 && windAngle <= 157){
+      windCardinal = "Southeast";
+    }else if (windAngle >= 157.01 && windAngle <= 202){
+      windCardinal = "South";
+    }else if (windAngle >= 202.01 && windAngle <= 247){
+      windCardinal = "Southwest";
+    }else if (windAngle >= 247.01 && windAngle <= 292){
+      windCardinal = "West";
+    }else if (windAngle >= 292.01 && windAngle <= 337){
+      windCardinal = "Northwest";
+    } else {
+      windCardinal = "North";
+    }
 
     database.ref("/weather").push({
       city: city,
@@ -76,7 +95,7 @@ function compileWeather() {
       temp: temperature,
       hi: hiTemp,
       low: lowTemp,
-      windAngle: windAngle,
+      windAngle: windCardinal,
       windSpeed: windSpeed
     });
 
@@ -92,7 +111,7 @@ function compileWeather() {
     console.log(response);
     city = response.city.name;
     var cloudyArray = [];
-    for (var i = 0; i < 40; i++) {
+    for (var i = 0; i < response.list.length; i++) {
      var cloudy = response.list[i].weather[0].description;
      if (i % 8 === 0) {
        cloudyArray.push(cloudy);
@@ -100,7 +119,7 @@ function compileWeather() {
     }  
     console.log(cloudyArray);
     var dateArray = [];
-    for (var j = 0; j < 40; j++) {
+    for (var j = 0; j < response.list.length; j++) {
       var originalDate = (response.list[j].dt_txt);
       if (j % 8 === 0) {
         var printDate = originalDate.substr(5).slice(0, -9);
@@ -112,23 +131,41 @@ function compileWeather() {
   });
 }
 
+var APIKeyThree = "AIzaSyB5H7TVakhlZZi9ddpd5t5HDldQT2DvGFQ";
+var queryURLThree = "https://maps.googleapis.com/maps/api/js?key=" + APIKeyThree + "&callback=initMap"; 
+
+function latLong() {
+  $.ajax({
+    url: queryURLThree,
+    method: "GET"
+  }).then(function(response) {
+    console.log(response);
+    // var latitude = response.*****;
+    // var longitude = response.*****;
+
+    // database.ref("/location").push({
+    //   latitude: latitude,
+    //   longitude: longitude
+    // });
+  });
+}
+
 function retrieveWeather() {
   database.ref("/weather").on("child_added", function (snapshot) {
-    // console.log(snapshot.val());
     $("#tableBody").append("<tr><td>" + snapshot.val().city +
       "</td><td>" + snapshot.val().temp +
       "</td><td>" + snapshot.val().humidity +
       "</td><td>" + snapshot.val().cloudy +
-      "</td><td>" + snapshot.val().windAngle +
-      "</td><td>" + snapshot.val().windSpeed +
-      "</td><td>" + snapshot.val().hi +
-      "</td><td>" + snapshot.val().low +
+      "</td><td>" + snapshot.val().windAngle + " at " + snapshot.val().windSpeed + " mph" +       
+      "</td><td>" + "High: " + snapshot.val().hi + "Low: " + snapshot.val().low +
+     
       "</td></tr>"
     );
   });
 }
 
-setUserInfo();
+
+
 
 var dateTime = "";
 var airQuality = "";
@@ -166,7 +203,7 @@ function aqiIndex() {
     // console.log(index);
     // console.log(recommendations);
 
-
+    
     database.ref("/aqiInfo").push({
       date: date,
       time: time,
@@ -189,4 +226,5 @@ function getAirQualityData() {
       "</td></tr>"
     );
   });
+  setUserInfo();
 }

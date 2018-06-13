@@ -7,16 +7,9 @@ var config = {
   messagingSenderId: "1002486779542"
 };
 
-var configTwo = {
-  apiKey: "AIzaSyAhVU1YP3GROwJdtg1mbXTPIcpuyHEo0TQ",
-  authDomain: "airquality-f3c1b-8457f.firebaseapp.com",
-  databaseURL: "https://airquality-f3c1b-8457f.firebaseio.com/",
-  projectId: "airquality-f3c1b-8457f",
-  storageBucket: "airquality-f3c1b.appspot.com",
-  messagingSenderId: "1002486779542"
-};
 
-firebase.initializeApp(config, configTwo);
+
+firebase.initializeApp();
 var inputCity = "";
 var database = firebase.database();
 var city = "";
@@ -27,7 +20,7 @@ var hiTemp = "";
 var lowTemp = "";
 var windAngle = "";
 var windSpeed = "";
-var date = "";
+
 
 
 
@@ -58,7 +51,8 @@ function compileWeather() {
     url: queryURLOne,
     method: "GET"
   }).then(function (response) {
-
+    date = moment().format('LL');
+    time = moment().format('LT');
 
     city = response.name;
     cloudy = response.weather[0].description;
@@ -89,6 +83,8 @@ function compileWeather() {
     }
 
     database.ref("/weather").push({
+      date: date,
+        time: time,
       city: city,
       cloudy: cloudy,
       humidity: humidity,
@@ -215,16 +211,98 @@ function aqiIndex() {
     });
   });
 }
+  function retrieveWeather() {
+    database.ref("/weather").on("child_added", function (snapshot) {
+      console.log(snapshot.val());
+      $("#tableBody").append("<tr><td>" + snapshot.val().date +
+        "</td><td>" + snapshot.val().time +
+        "</td><td>" + snapshot.val().city +
+        "</td><td>" + snapshot.val().temp +
+        "</td><td>" + snapshot.val().humidity +
+        "</td><td>" + snapshot.val().cloudy +
+        "</td><td>" + snapshot.val().windAngle +
+        "</td><td>" + snapshot.val().windSpeed +
+        "</td><td>" + snapshot.val().hi +
+        "</td><td>" + snapshot.val().low +
+        "</td></tr>"
+      );
+    });
+  }
 
-function getAirQualityData() {
-  database.ref("/aqiInfo").on("child_added", function (snapshot) {
-    $("#aqiTable").append("<tr><td>" + snapshot.val().dateTime +
-      "</td><td>" + snapshot.val().airQuality +
-      "</td><td>" + snapshot.val().airColor +
-      "</td><td>" + snapshot.val().index +
-      "</td><td>" + snapshot.val().recommendations +
-      "</td></tr>"
-    );
-  });
   setUserInfo();
+  var dateTime = "";
+  var airQuality = "";
+  var color = "";
+  var recommendations = "";
+  //   function compileAirQuality();
+  var qualityLat = $("#cityInputLat").text();
+  var qualityLong = $("#cityInputLong").text();
+  var apiKey = "e4417ac440f444eb8397e28bcb3fc5c5";
+  var settings = {
+    // "async": true,
+    // "crossDomain": true,
+    // additional variable inforation to flood latitude and longitude.
+    "url": "https://api.breezometer.com/baqi/?lat=40.7324296&lon=-73.9977264&key=e4417ac440f444eb8397e28bcb3fc5c5",
+    "method": "GET",
+    // "headers": {
+    //   "Cache-Control": "no-cache",
+    //   "Postman-Token": "1d63ebfc-0c70-4f76-ad2e-88c75e87c36c"
+    // }
+  };
+  function aqiIndex() {
+    $.ajax(settings).done(function (response) {
+      console.log(response);
+      inputCity = $(".form-control").val().trim();
+      date = moment().format('LL');
+      time = moment().format('LT');
+      airQuality = response.breezometer_aqi;
+      airColor = response.breezometer_color;
+      index = response.breezometer_description;
+      recommendations = response.random_recommendations.health;
+      
+            console.log(inputCity);
+            console.log(date);
+            console.log(time);
+            console.log(airQuality);
+            console.log(airColor);
+            console.log(index);
+            console.log(recommendations);
+
+if (airColor === "#009E3A") {
+  airColor = "pillshape";
+} else if (airColor === "#58BE35") {
+  airColor = "circle";
+} else if (airColor === "#C1E619") {
+  airColor = "diamond";
+} else if (airColor === "#FEC500") {
+  airColor = "triangle";
+} else if (airColor === "#FE4600") {
+  airColor = "square";
+} else if (airColor === "#800000") {
+  airColor = "hexagon";
 }
+
+      database.ref("/aqiInfo").push({
+        inputCity: inputCity,
+        date: date,
+        time: time,
+        airQuality: airQuality,
+        airColor: airColor,
+        index: index,
+        recommendations: recommendations
+      });
+    });
+  }
+  function getAirQualityData() {
+    database.ref("/aqiInfo").on("child_added", function (snapshot) {
+      $("#aqiTable").append("<tr><td>" + snapshot.val().date +
+        "</td><td>" + snapshot.val().time + 
+        "</td><td>" + snapshot.val().inputCity +
+        "</td><td>" + snapshot.val().airQuality +
+        "</td><td data-color =" + snapshot.val().airColor + ">" +
+        "</td><td>" + snapshot.val().index +
+        "</td><td>" + snapshot.val().recommendations +
+        "</td></tr>"
+      );
+    });
+  }

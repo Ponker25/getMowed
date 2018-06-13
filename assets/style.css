@@ -1,5 +1,5 @@
 body {
-background-image: url(https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/itCjTBE/light-blue-smooth-waves-abstract-background-video-animation-1920x1080_v1oanuqzg__F0000.png);
+background-image: url(https://d100radio.com/media/uploads/2017/11/AdobeStock_159538549.jpeg);
 }
 
 
@@ -17,3 +17,90 @@ font-size: 80px;
 text-shadow: 5px 5px 5px black;
 
 }
+
+#pillshape{
+    width: 40px;
+    height: 25px;
+    background:green;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius:40px;
+}
+
+#square {
+    width: 35px;
+    height: 35px;
+    background: red;
+}
+
+#triangle {
+    width: 0;
+    height: 0;
+    border-top: 30px solid orange;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+}
+
+
+#circle {
+	width: 35px;
+	height: 35px;
+	background:#58be35;
+	-moz-border-radius: 50px;
+	-webkit-border-radius: 50px;
+	border-radius: 50px;
+}
+
+#hexagon {
+	width: 100px;
+	height: 55px;
+	background: #800000;
+	position: relative;
+}
+#hexagon:before {
+	content: "";
+	position: absolute;
+	top: -25px;
+	left: 0;
+	width: 0;
+	height: 0;
+	border-left: 50px solid transparent;
+	border-right: 50px solid transparent;
+	border-bottom: 25px solid #800000;
+}
+#hexagon:after {
+	content: "";
+	position: absolute;
+	bottom: -25px;
+	left: 0;
+	width: 0;
+	height: 0;
+	border-left: 50px solid transparent;
+	border-right: 50px solid transparent;
+	border-top: 25px solid #800000;
+}
+
+
+#diamond {
+	width: 0;
+	height: 0;
+	border: 28px solid transparent;
+	border-bottom-color:  #fec500;;
+	position: relative;
+	top: -28px;
+}
+#diamond:after {
+	content: '';
+	position: absolute;
+	left: -28px;
+	top: 28px;
+	width: 0;
+	height: 0;
+	border: 28px solid transparent;
+	border-top-color: #fec500;
+}
+				
+
+
+
+

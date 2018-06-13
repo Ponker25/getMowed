@@ -15,25 +15,24 @@
         <br>
         <div class="jumbotron">
             <h1 class="text-center">Welcome to Weather Box</h1>
-            <h3 class="text-center">"Where you can find ......"</h3>
+            <h3 class="text-center">"Find the weather wherever you want!"</h3>
         </div>
 
         <form>
             <div class="form-group">
-                <label for="exampleFormControlInput1">
-                    <strong>Enter the City</strong>
-                </label>
-               
-                <input type="text" class="form-control" for="age" id="age" title="Enter the city for which you would like to see weather" id="exampleFormControlInput1" placeholder="Salt Lake City">
-            </div>
-            <input type="submit" class="btn btn-light" value="Search" id="submitButton">
+                <label for="exampleFormControlInput1"><strong>Enter the City</strong></label> 
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter a city">
+            </div> 
 
-        </form>
-        <br>
-        <br>
+            <input type="button" class="btn btn-light" value="Search" id="submitButton">
+        
+        </form>   
+        <br><br>
         <table class="table table-hover table-info">
             <thead>
                 <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Time</th>
                     <th scope="col">City</th>
                     <th scope="col">Temperature</th>
                     <th scope="col">Humidity</th>
@@ -49,9 +48,9 @@
         <table class="table table-hover table-danger">
             <thead>
                 <tr>
-                    <th scope="col">City</th>
                     <th scope="col">Date</th>
                     <th scope="col">Time</th>
+                    <th scope="col">City</th> 
                     <th scope="col">Air Quality</th>
                     <th scope="col">Index</th>
                     <th scope="col">Color</th>
@@ -103,6 +102,7 @@
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
         crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
         crossorigin="anonymous"></script>
